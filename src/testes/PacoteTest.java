@@ -10,9 +10,6 @@ import pacotes.Pacote;
 
 class PacoteTest {
 
-    double resultadoEsperado, resultadoProduzido;
-    Pacote p;
-
     @Test
     void testPositivo() {
         //massa de dados de valores positivos
@@ -21,14 +18,19 @@ class PacoteTest {
         //preencher massa de dados
         massa.put(new Pacote(' ','A',' ',10), 30.0);
         massa.put(new Pacote(' ','A',' ',20), 60.0);
+        massa.put(new Pacote(' ','A',' ',50), 100.0);
         massa.put(new Pacote('L','S','E',10), 20.0);
-        massa.put(new Pacote('L','S','E',19.9), 39.8);
-        massa.put(new Pacote('L','S','E',20), 40.0);
-        massa.put(new Pacote('L','S','E',20.1), 40.2);
+        massa.put(new Pacote('L','S','N',20), 40.0);
+        massa.put(new Pacote('L','S','E',30), 60.0);
+        massa.put(new Pacote('F','S','E',10), 20.0);
+        massa.put(new Pacote('F','S','E',20), 40.0);
+        massa.put(new Pacote('F','S','E',30), 90.0);
+        massa.put(new Pacote('F','S','N',10), 20.0);
+        massa.put(new Pacote('F','S','N',20), 40.0);
+        massa.put(new Pacote('F','S','N',30), 60.0);
 
         //processamento com foreach
-        massa.forEach((pacote, freteEsperado) ->{
-            assertEquals(freteEsperado, pacote.calcularFrete());});
+        massa.forEach((pacote, freteEsperado) -> assertEquals(freteEsperado, pacote.calcularFrete()));
     }
 
     @Test
@@ -47,8 +49,7 @@ class PacoteTest {
         massa.put(new Pacote('L','S','E',20.8), 41.6);
 
         //processamento com foreach
-        massa.forEach((pacote, freteEsperado) ->{
-            assertEquals(freteEsperado, pacote.calcularFrete());});
+        massa.forEach((pacote, freteEsperado) -> assertEquals(freteEsperado, pacote.calcularFrete()));
     }
 
     @Test
@@ -57,17 +58,16 @@ class PacoteTest {
         HashMap<Pacote, Double> massa = new HashMap<>();
 
         //preencher massa de dados
-        massa.put(new Pacote(' ','A',' ',1.99), 11.94);
+        massa.put(new Pacote(' ','A',' ',0.01), 6.0);
+        massa.put(new Pacote(' ','A',' ',1.99), 6.0);
         massa.put(new Pacote(' ','A',' ',2.01), 6.03);
         massa.put(new Pacote(' ','A',' ',19.99), 59.97);
         massa.put(new Pacote(' ','A',' ',20.01), 40.02);
-        massa.put(new Pacote('L','S','E',10), 20.0);
         massa.put(new Pacote('L','S','E',19.99), 39.98);
         massa.put(new Pacote('L','S','E',20.01), 40.02);
 
         //processamento com foreach
-        massa.forEach((pacote, freteEsperado) ->{
-            assertEquals(freteEsperado, pacote.calcularFrete());});
+        massa.forEach((pacote, freteEsperado) -> assertEquals(freteEsperado, pacote.calcularFrete()));
     }
 
 }
